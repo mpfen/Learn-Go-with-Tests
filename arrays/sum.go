@@ -9,3 +9,30 @@ func Sum(numbers []int) int {
 
 	return sum
 }
+
+func SumAll(slicesToSum ...[]int) []int {
+
+	var sums []int
+
+	for _, slice := range slicesToSum {
+		sums = append(sums, Sum(slice))
+	}
+
+	return sums
+}
+
+func SumAllTails(slicesToSum ...[]int) []int {
+
+	var sums []int
+
+	for _, slice := range slicesToSum {
+		if len(slice) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := slice[1:]
+			sums = append(sums, Sum(tail))
+		}
+	}
+
+	return sums
+}
